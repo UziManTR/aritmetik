@@ -53,11 +53,11 @@
           <button type="button" class="op-btn active" data-op="×">× Çarpma</button>
           <button type="button" class="op-btn active" data-op="÷">÷ Bölme</button>
         </div>
-        <label>Süre <select id="secondsPerQuestion"><option>5</option><option>10</option><option selected>15</option><option>20</option><option>30</option></select> saniye</label>
+        <label>Sayı başına bekleme <input id="secondsPerQuestion" type="number" min="0.1" step="0.1" value="1" inputmode="decimal"> saniye</label>
         <label>Sayı basamağı <select id="digits"><option value="1">Tek basamak</option><option value="2" selected>Çift basamak</option></select></label>
-        <label>İfade uzunluğu <select id="numberCount"><option>4</option><option>5</option><option>10</option><option selected>20</option></select> sayı</label>
+        <label>Sayı adedi <input id="numberCount" type="number" min="4" max="20" step="1" value="20" inputmode="numeric"> sayı</label>
       </div>
-      <label id="difficultyWrap">Zorluk<select id="difficulty"><option value="easy">Kolay</option><option value="medium" selected>Orta</option><option value="hard">Zor</option></select></label>
+      <label id="difficultyWrap" hidden>Zorluk<select id="difficulty"><option value="medium" selected>Orta</option></select></label>
       <label>Soru sayısı<select id="questionCount"><option>10</option><option selected>20</option><option>30</option><option>50</option></select></label>
       <button id="startBtn" class="primary full">Turu Başlat</button>
       <div class="tips"><b>Nasıl oynanır?</b><p>Doğru cevap hızını da hesaba katar. Enter ile gönder, yeni soruya otomatik geç.</p></div>
