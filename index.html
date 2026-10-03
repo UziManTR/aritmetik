@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aritmetik | Ders Portalı</title>
+  <meta name="description" content="Hızlı aritmetik pratik, günlük hedefler ve global liderlik tablosu.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="toast"></div>
+<header class="topbar">
+  <a class="brand" href="#home"><span class="brand-mark">∑</span><span>Aritmetik</span></a>
+  <nav>
+    <button data-page="home" class="nav-btn active">Ana Sayfa</button>
+    <button data-page="practice" class="nav-btn">Pratik</button>
+    <button data-page="leaderboard" class="nav-btn">Sıralama</button>
+    <button data-page="stats" class="nav-btn">İstatistik</button>
+  </nav>
+  <div class="profile-mini"><span id="profileAvatar">🧠</span><span id="profileName">Misafir</span></div>
+</header>
+
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div><p class="eyebrow">ARİTMETİK LAB</p><h1>Hesapla. <span>Hızlan.</span> Zirveye çık.</h1>
+    <p class="muted hero-copy">Toplama, çıkarma, çarpma, bölme ve işlem önceliğini oyun gibi çalış.</p>
+    <button class="primary big" data-page="practice">Pratiğe Başla →</button></div>
+    <div class="hero-card"><div class="hero-symbol">÷</div><div><b id="heroStreak">0</b><small> günlük seri</small></div><div><b id="heroBest">0</b><small> en iyi skor</small></div></div>
+  </div>
+  <div class="section-head"><div><p class="eyebrow">MODLAR</p><h2>Bugün ne çalışıyoruz?</h2></div></div>
+  <div class="mode-grid">
+    <button class="mode-card" data-mode="mixed"><span>⚡</span><b>Karışık</b><small>Her şeyden biraz</small></button>
+    <button class="mode-card" data-mode="four"><span>✚</span><b>4 İşlem</b><small>Topla, çıkar, çarp, böl</small></button>
+    <button class="mode-card" data-mode="priority"><span>⌁</span><b>İşlem Önceliği</b><small>Parantez ve öncelik</small></button>
+    <button class="mode-card" data-mode="speed"><span>⏱</span><b>Hız Turu</b><small>60 saniyede maksimum</small></button>
+  </div>
+  <div class="two-col">
+    <div class="panel"><div class="panel-title"><h3>Bugünün hedefi</h3><span id="goalText">0 / 10</span></div><div class="progress"><i id="goalBar"></i></div><p class="muted">10 doğru cevapla günlük hedefi tamamla.</p></div>
+    <div class="panel"><div class="panel-title"><h3>Son skorlar</h3><button class="link" data-page="stats">Tümü →</button></div><div id="recentScores" class="score-list"></div></div>
+  </div>
+</section>
+
+<section id="practice" class="page">
+  <div class="practice-layout">
+    <aside class="side-panel">
+      <p class="eyebrow">PRATİK</p><h2 id="modeTitle">Karışık</h2>
+      <label>Zorluk<select id="difficulty"><option value="easy">Kolay</option><option value="medium" selected>Orta</option><option value="hard">Zor</option></select></label>
+      <label>Soru sayısı<select id="questionCount"><option>10</option><option selected>20</option><option>30</option><option>50</option></select></label>
+      <button id="startBtn" class="primary full">Turu Başlat</button>
+      <div class="tips"><b>Nasıl oynanır?</b><p>Doğru cevap hızını da hesaba katar. Enter ile gönder, yeni soruya otomatik geç.</p></div>
+    </aside>
+    <div class="quiz-card">
+      <div class="quiz-top"><span id="questionNo">Hazır</span><span id="timer">00:00</span><span id="liveScore">0 puan</span></div>
+      <div id="quizIdle" class="quiz-idle"><div class="big-icon">∑</div><h2>Hazır mısın?</h2><p class="muted">Soldan ayarlarını seç ve başla.</p></div>
+      <div id="quizRun" hidden><div class="question" id="question">12 + 7 = ?</div><input id="answer" type="number" inputmode="numeric" autocomplete="off" placeholder="Cevabın"><button id="submitAnswer" class="primary full">Cevapla ↵</button><div id="feedback" class="feedback"></div></div>
+      <div id="quizResult" hidden class="quiz-result"><div class="result-icon">🏆</div><h2 id="resultTitle">Tur tamamlandı!</h2><div class="result-stats"><div><b id="resultScore">0</b><small>Puan</small></div><div><b id="resultCorrect">0/0</b><small>Doğru</small></div><div><b id="resultTime">0s</b><small>Süre</small></div></div><button id="saveScore" class="primary">Skoru Kaydet</button><button id="againBtn" class="secondary">Tekrar Oyna</button></div>
+    </div>
+  </div>
+</section>
+
+<section id="leaderboard" class="page">
+  <div class="page-title"><p class="eyebrow">GLOBAL</p><h1>Liderlik Tablosu</h1><p class="muted">En yüksek skorlar burada. Adını yaz, tahtaya çık.</p></div>
+  <div class="leader-tools"><div class="tabs"><button class="tab active" data-board="all">Tümü</button><button class="tab" data-board="mixed">Karışık</button><button class="tab" data-board="speed">Hız Turu</button></div><button id="refreshBoard" class="secondary">↻ Yenile</button></div>
+  <div class="leaderboard panel"><div class="leader-head"><span>#</span><span>Oyuncu</span><span>Mod</span><span>Doğru</span><span>Puan</span></div><div id="leaderRows"></div></div>
+</section>
+
+<section id="stats" class="page">
+  <div class="page-title"><p class="eyebrow">PROFİL</p><h1>İstatistiklerin</h1></div>
+  <div class="stats-grid"><div class="stat-card"><small>Toplam puan</small><b id="statPoints">0</b></div><div class="stat-card"><small>Doğru cevap</small><b id="statCorrect">0</b></div><div class="stat-card"><small>Oynanan tur</small><b id="statGames">0</b></div><div class="stat-card"><small>En iyi skor</small><b id="statBest">0</b></div></div>
+  <div class="panel profile-panel"><h3>Profil</h3><div class="profile-form"><input id="nameInput" maxlength="18" placeholder="Görünen adın"><select id="avatarInput"><option>🧠</option><option>🚀</option><option>⚡</option><option>🦊</option><option>👾</option><option>🎯</option></select><button id="saveProfile" class="primary">Kaydet</button></div></div>
+</section>
+</main>
+<footer>Aritmetik • Ders çalış, skor kas. <span id="connection">Yerel mod</span></footer>
+<script src="js/config.js"></script><script src="js/questions.js"></script><script src="js/leaderboard.js"></script><script src="js/app.js"></script>
+</body></html>
